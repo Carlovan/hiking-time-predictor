@@ -1,0 +1,3 @@
+gpxpy==1.4.2
+SRTM.py==0.3.4
+ipywidgets==7.5.1

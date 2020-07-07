@@ -2,3 +2,5 @@ srtm_cache/**
 32068_41607_compressed_gpx-tracks-from-hikr.org.csv.zip
 gpx-tracks-from-hikr.org.csv
 tracks.pkl
+.ipynb_checkpoints/
+__pycache__/**
