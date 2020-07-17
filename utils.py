@@ -12,7 +12,7 @@ from IPython.display import clear_output
 ZIP_FILE = '32068_41607_compressed_gpx-tracks-from-hikr.org.csv.zip'
 CSV_FILE = 'gpx-tracks-from-hikr.org.csv'
 DATA_FILE = 'tracks.pkl'
-URL = 'https://www.kaggle.com/roccoli/gpx-hike-tracks'
+URL = 'https://raw.githubusercontent.com/Carlovan/hiking-time-predictor/master/32068_41607_compressed_gpx-tracks-from-hikr.org.csv.zip'
 
 def drop_where(df, condition):
     '''
@@ -132,7 +132,7 @@ def prepare_data():
     if not os.path.exists(DATA_FILE):
         if not os.path.exists(CSV_FILE):
             if not os.path.exists(ZIP_FILE):
-                raise FileNotFoundError(f'Download the dataset from {URL} and save it as {ZIP_FILE}')
+                urllib.request.urlretrieve(URL, ZIP_FILE)
             print('Extracting file')
             with zipfile.ZipFile(ZIP_FILE, 'r') as zip_ref:
                 zip_ref.extractall('.')
