@@ -5,6 +5,7 @@ from datetime import timedelta
 import os
 import urllib.request
 import zipfile
+import numpy as np
 from IPython.display import clear_output
 
 ZIP_FILE = '32068_41607_compressed_gpx-tracks-from-hikr.org.csv.zip'
@@ -147,3 +148,12 @@ def highlight_zero(s):
     '''
     is_max = s == 0
     return ['background-color: yellow' if v else '' for v in is_max]
+
+def highlight_where(mask, color='yellow'):
+    '''
+    Returns a Pandas style to highlight the cells where 'mask' is True using the specified color.
+    Use `df.style.apply(highlight_where(...))`
+    '''
+    def style(s):
+        return np.where(mask[s.name], f'background-color: {color}', '')
+    return style
