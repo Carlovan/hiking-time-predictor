@@ -6,6 +6,7 @@ import os
 import urllib.request
 import zipfile
 import numpy as np
+import pandas as pd
 from IPython.display import clear_output
 
 ZIP_FILE = '32068_41607_compressed_gpx-tracks-from-hikr.org.csv.zip'
