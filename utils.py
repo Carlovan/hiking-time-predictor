@@ -11,7 +11,6 @@ from IPython.display import clear_output
 ZIP_FILE = '32068_41607_compressed_gpx-tracks-from-hikr.org.csv.zip'
 CSV_FILE = 'gpx-tracks-from-hikr.org.csv'
 DATA_FILE = 'tracks.pkl'
-URL = 'https://storage.googleapis.com/kaggle-data-sets/32068%2F41607%2Fcompressed%2Fgpx-tracks-from-hikr.org.csv.zip?GoogleAccessId=gcp-kaggle-com@kaggle-161607.iam.gserviceaccount.com&Expires=1593535283&Signature=h9NAiji%2BUfFAwbJk8WrMZSwIWgBL86%2Fbf4qzsIeP95uNP33M8zo4zZIuOvcArZ4lXCkb7Kfn391JhuO1xX2W3iApcn58W0Q1K5d%2FV2XPPEHMP%2B76ovsbSescESqrHktXsO%2BA1KtILyM1B4eE%2BEDBpRSoAyXvUmdsQAjGp82U3LvE8JJgOaeSqFN6rSmMkHYEMguhlPoQXcpnNFNh7y0shk85tUhx%2BIbQoPAqtmCF0%2FiazOROZCT%2BpdM8eSMBt%2F1OzMD4k9%2F40ripEW1Y2y5DKKj2%2FwCvUULWNoCO1NJWV8eN1C4lefbHRyOm4VtmOaDjeaAVOAlsCQoLLst9%2B443DA%3D%3D'
 
 def drop_where(df, condition):
     '''
@@ -131,7 +130,7 @@ def prepare_data():
     if not os.path.exists(DATA_FILE):
         if not os.path.exists(CSV_FILE):
             if not os.path.exists(ZIP_FILE):
-                urllib.request.urlretrieve(URL, ZIP_FILE, update_progress)
+                !kaggle datasets download -d roccoli/gpx-hike-tracks
             print('Extracting file')
             with zipfile.ZipFile(ZIP_FILE, 'r') as zip_ref:
                 zip_ref.extractall('.')
